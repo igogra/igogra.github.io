@@ -74,10 +74,9 @@ nav {
   transition: background 0.35s;
 }
 .nav-logo {
-  font-family: 'Syne', sans-serif; font-weight: 800;
-  font-size: 1.1rem; color: var(--bright); text-decoration: none;
+  display: flex; align-items: center; text-decoration: none;
 }
-.nav-logo span { color: var(--accent); }
+.nav-logo img { height: 2rem; width: auto; display: block; }
 .nav-links {
   display: flex; gap: 1.75rem; list-style: none; align-items: center;
 }
@@ -389,14 +388,24 @@ body.light .tl-tag { background: rgba(90,79,207,0.06); border-color: rgba(90,79,
 }
 .chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(123,110,246,0.05); }
 .certs-list { display: flex; flex-direction: column; }
-.cert-item { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
-.cert-icon {
-  width: 34px; height: 34px; flex-shrink: 0;
-  background: rgba(255,120,50,0.1); border: 1px solid rgba(255,120,50,0.25);
-  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+.cert-item {
+  display: flex; align-items: center; gap: 1.25rem;
+  padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+  text-decoration: none; color: inherit; transition: padding-left 0.25s;
 }
+.cert-item:hover { padding-left: 0.5rem; }
+.cert-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; transition: border-color 0.2s, background 0.2s;
+}
+.cert-item:hover .cert-icon { border-color: var(--accent); background: rgba(123,110,246,0.08); }
+.cert-icon svg { width: 22px; height: 22px; flex-shrink: 0; }
 .cert-text strong { display: block; color: var(--text); font-size: 0.7rem; line-height: 1.4; margin-bottom: 0.1rem; }
 .cert-text span { color: var(--muted); font-size: 0.62rem; }
+.cert-arrow { margin-left: auto; color: var(--muted); transition: color 0.2s, transform 0.2s; }
+.cert-item:hover .cert-arrow { color: var(--accent2); transform: translate(3px,-3px); }
 
 /* ── PROJECTS ───────────────────────────────────── */
 .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
@@ -423,6 +432,8 @@ body.light .tl-tag { background: rgba(90,79,207,0.06); border-color: rgba(90,79,
   font-weight: 800; color: rgba(123,110,246,0.12); letter-spacing: -0.05em;
   transition: background 0.35s, border-color 0.35s;
 }
+.project-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.project-thumb .plabel { z-index: 1; }
 body.light .project-thumb { color: rgba(90,79,207,0.1); }
 .project-thumb .plabel {
   position: absolute; bottom: 0.4rem; left: 0.4rem;
@@ -465,7 +476,10 @@ body.light .contact-big em { -webkit-text-stroke: 1px rgba(90,79,207,0.35); }
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem; transition: border-color 0.2s, background 0.2s;
+  color: var(--text);
 }
+.channel-icon svg { width: 20px; height: 20px; flex-shrink: 0; }
+.channel-icon svg path { fill: currentColor; }
 .channel:hover .channel-icon { border-color: var(--accent); background: rgba(123,110,246,0.08); }
 .channel-label { display: block; font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.13em; margin-bottom: 0.1rem; }
 .channel-value { color: var(--text); font-size: 0.76rem; }
@@ -551,7 +565,7 @@ footer {
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <a href="#home" class="nav-logo">IG<span>.</span></a>
+  <a href="#home" class="nav-logo"><img src="img/logo.png" alt="IG"></a>
   <ul class="nav-links">
     <li><a href="#sobre-mi"><span data-lang="es" class="active">Sobre mí</span><span data-lang="en">About</span></a></li>
     <li><a href="#experiencia"><span data-lang="es" class="active">Experiencia</span><span data-lang="en">Experience</span></a></li>
@@ -769,9 +783,9 @@ footer {
       </div>
       <div class="skill-cat"><span data-lang="es" class="active">Certificaciones</span><span data-lang="en">Certifications</span></div>
       <div class="certs-list">
-        <div class="cert-item"><div class="cert-icon">☕</div><div class="cert-text"><strong>Oracle Certified Expert, Java EE6 Web Services Developer</strong><span>Oracle University</span></div></div>
-        <div class="cert-item"><div class="cert-icon">☕</div><div class="cert-text"><strong>Oracle Certified Professional, Java SE 7 Programmer</strong><span>Oracle University</span></div></div>
-        <div class="cert-item"><div class="cert-icon">☕</div><div class="cert-text"><strong>Oracle Certified Associate, Java SE 7 Programmer</strong><span>Oracle University</span></div></div>
+        <a href="https://www.youracclaim.com/badges/12c20a96-fcdf-4d79-a179-808a439933ea" target="_blank" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000" fill-rule="evenodd"><path d="M2 12A10 4 0 0 1 22 12A10 4 0 0 1 2 12zM5 12A7 2.5 0 0 1 19 12A7 2.5 0 0 1 5 12z"/></svg></div><div class="cert-text"><strong>Oracle Certified Expert, Java EE6 Web Services Developer</strong><span>Oracle University</span></div><span class="cert-arrow">↗</span></a>
+        <a href="https://www.youracclaim.com/badges/34f85326-6b71-4a96-ae4d-adc66c75ab25" target="_blank" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000" fill-rule="evenodd"><path d="M2 12A10 4 0 0 1 22 12A10 4 0 0 1 2 12zM5 12A7 2.5 0 0 1 19 12A7 2.5 0 0 1 5 12z"/></svg></div><div class="cert-text"><strong>Oracle Certified Professional, Java SE 7 Programmer</strong><span>Oracle University</span></div><span class="cert-arrow">↗</span></a>
+        <a href="https://www.youracclaim.com/badges/6e33c0c1-54f0-4823-a785-d1ccceef9b29" target="_blank" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000" fill-rule="evenodd"><path d="M2 12A10 4 0 0 1 22 12A10 4 0 0 1 2 12zM5 12A7 2.5 0 0 1 19 12A7 2.5 0 0 1 5 12z"/></svg></div><div class="cert-text"><strong>Oracle Certified Associate, Java SE 7 Programmer</strong><span>Oracle University</span></div><span class="cert-arrow">↗</span></a>
       </div>
     </div>
   </div>
@@ -786,45 +800,45 @@ footer {
   <div class="projects-grid">
     <div class="project-card reveal">
       <div class="project-num">01</div>
-      <div class="project-thumb">XG<span class="plabel">Vue · Microfrontends · Gov</span></div>
+      <div class="project-thumb"><img src="img/xunta.png" alt="Xunta de Galicia"><span class="plabel">Vue · Microfrontends · Gov</span></div>
       <div class="project-name">Xunta de Galicia</div>
       <div class="project-desc"><span data-lang="es" class="active">Portales educativos para centros, profesorado y familias. Sistema de diseño unificado y Microfrontends con Vue y Vuetify.</span><span data-lang="en">Educational portals for schools, teachers and families. Unified Design System and Microfrontends with Vue and Vuetify.</span></div>
-      <div class="project-foot"><span class="project-role"><span data-lang="es" class="active">Arquitecto Frontend</span><span data-lang="en">Frontend Architect</span></span></div>
+      <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">02</div>
-      <div class="project-thumb">⚛<span class="plabel">Angular · TypeScript · Science</span></div>
+      <div class="project-thumb"><img src="img/cern.png" alt="CERN"><span class="plabel">Angular · TypeScript · Science</span></div>
       <div class="project-name">CERN</div>
       <div class="project-desc"><span data-lang="es" class="active">Aplicaciones críticas para visualización de datos científicos complejos. Optimización con lazy loading y virtual scrolling.</span><span data-lang="en">Mission-critical applications for complex scientific data visualization. Optimized with lazy loading and virtual scrolling.</span></div>
-      <div class="project-foot"><span class="project-role">Lead Developer</span><a href="https://home.cern" target="_blank" class="project-link">↗</a></div>
+      <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">03</div>
-      <div class="project-thumb">CS<span class="plabel">Angular · Design System</span></div>
+      <div class="project-thumb"><img src="img/netex.jpg" alt="Netex Learning"><span class="plabel">Angular · PrimeNG · E-learning</span></div>
+      <div class="project-name">Netex Learning</div>
+      <div class="project-desc"><span data-lang="es" class="active">Aplicaciones educativas y librería de componentes para e-learning. QA con Cypress y documentación en Storybook.</span><span data-lang="en">Educational applications and component library for e-learning. QA with Cypress and documentation in Storybook.</span></div>
+      <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span><a href="https://www.netexlearning.com/" target="_blank" class="project-link">↗</a></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">04</div>
+      <div class="project-thumb"><img src="img/consum.jpg" alt="Consum"><span class="plabel">Angular · Design Systems · Retail</span></div>
       <div class="project-name">Consum</div>
       <div class="project-desc"><span data-lang="es" class="active">Arquitectura Frontend corporativa. Librería de componentes, generador con Angular Schematics y Design System en Storybook.</span><span data-lang="en">Corporate Frontend architecture. Component library, Angular Schematics generator and Design System in Storybook.</span></div>
       <div class="project-foot"><span class="project-role"><span data-lang="es" class="active">Arquitecto Frontend</span><span data-lang="en">Frontend Architect</span></span></div>
     </div>
     <div class="project-card reveal">
-      <div class="project-num">04</div>
-      <div class="project-thumb">LT<span class="plabel">PHP · REST API · High traffic</span></div>
+      <div class="project-num">05</div>
+      <div class="project-thumb"><img src="img/latercera.jpg" alt="La Tercera"><span class="plabel">PHP · JavaScript · High traffic</span></div>
       <div class="project-name">La Tercera</div>
       <div class="project-desc"><span data-lang="es" class="active">Diario digital de mayor difusión en Chile. Alto tráfico y escalabilidad, REST API para exposición de contenidos.</span><span data-lang="en">Chile's highest-circulation digital newspaper. High traffic, scalability and REST API for content exposure.</span></div>
       <div class="project-foot"><span class="project-role">Full-Stack Developer</span><a href="https://www.latercera.com/" target="_blank" class="project-link">↗</a></div>
     </div>
     <div class="project-card reveal">
-      <div class="project-num">05</div>
-      <div class="project-thumb">DM<span class="plabel">AngularJS · SaaS · BI</span></div>
+      <div class="project-num">06</div>
+      <div class="project-thumb"><img src="img/datamaran.jpg" alt="Datamaran"><span class="plabel">AngularJS · HTML/CSS · BI</span></div>
       <div class="project-name">Datamaran</div>
       <div class="project-desc"><span data-lang="es" class="active">Plataforma SaaS multi-usuario para análisis de riesgos regulatorios, competencia y reputacionales.</span><span data-lang="en">Multi-user SaaS platform for regulatory, competitive and reputational risk analysis.</span></div>
       <div class="project-foot"><span class="project-role">Full-Stack Developer</span><a href="https://www.datamaran.com/" target="_blank" class="project-link">↗</a></div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-num">06</div>
-      <div class="project-thumb">NX<span class="plabel">Angular · Cypress · e-learning</span></div>
-      <div class="project-name">Netex Learning</div>
-      <div class="project-desc"><span data-lang="es" class="active">Aplicaciones educativas y librería de componentes para e-learning. QA con Cypress y documentación en Storybook.</span><span data-lang="en">Educational applications and component library for e-learning. QA with Cypress and documentation in Storybook.</span></div>
-      <div class="project-foot"><span class="project-role">Lead Developer</span><a href="https://www.netexlearning.com/" target="_blank" class="project-link">↗</a></div>
     </div>
   </div>
 </div>
@@ -840,9 +854,9 @@ footer {
       <p class="contact-sub"><span data-lang="es" class="active">Si tienes un proyecto que requiere arquitectura Frontend sólida, liderazgo técnico o simplemente quieres hablar de tecnología — escríbeme. Disponible para proyectos remotos e internacionales.</span><span data-lang="en">If you have a project that requires solid Frontend architecture, technical leadership, or simply want to talk tech — reach out. Available for remote and international projects.</span></p>
     </div>
     <div class="channels">
-      <a href="mailto:ivan.gomez.grande@gmail.com" class="channel"><div class="channel-icon">✉</div><div><span class="channel-label">Email</span><span class="channel-value">ivan.gomez.grande@gmail.com</span></div><span class="channel-arrow">↗</span></a>
-      <a href="https://es.linkedin.com/in/igogra" target="_blank" class="channel"><div class="channel-icon">in</div><div><span class="channel-label">LinkedIn</span><span class="channel-value">/in/igogra</span></div><span class="channel-arrow">↗</span></a>
-      <a href="https://github.com/igogra" target="_blank" class="channel"><div class="channel-icon">⌥</div><div><span class="channel-label">GitHub</span><span class="channel-value">/igogra</span></div><span class="channel-arrow">↗</span></a>
+      <a href="mailto:ivan.gomez.grande@gmail.com" class="channel"><div class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><span class="channel-label">Email</span><span class="channel-value">ivan.gomez.grande@gmail.com</span></div><span class="channel-arrow">↗</span></a>
+      <a href="https://es.linkedin.com/in/igogra" target="_blank" class="channel"><div class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div><div><span class="channel-label">LinkedIn</span><span class="channel-value">/in/igogra</span></div><span class="channel-arrow">↗</span></a>
+      <a href="https://github.com/igogra" target="_blank" class="channel"><div class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.63-5.373-12-12-12"/></svg></div><div><span class="channel-label">GitHub</span><span class="channel-value">/igogra</span></div><span class="channel-arrow">↗</span></a>
     </div>
   </div>
 </div>
@@ -910,7 +924,7 @@ function animRing() {
   requestAnimationFrame(animRing);
 }
 animRing();
-document.querySelectorAll('a, button, .chip, .stat-cell, .project-card, .timeline-item, .channel').forEach(function(el) {
+document.querySelectorAll('a, button, .chip, .stat-cell, .project-card, .timeline-item, .channel, .cert-item').forEach(function(el) {
   el.addEventListener('mouseenter', function() {
     if (cursor) { cursor.style.width = '20px'; cursor.style.height = '20px'; }
     if (cursorRing) { cursorRing.style.width = '50px'; cursorRing.style.height = '50px'; cursorRing.style.borderColor = 'rgba(0,229,195,0.7)'; }
