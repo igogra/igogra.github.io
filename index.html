@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iván Gómez — Arquitecto Frontend & Lead/Senior Frontend Developer</title>
-<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Iván Gómez — Arquitecto Frontend</title>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon" sizes="any">
+<link rel="icon" href="img/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://unpkg.com">
+<link rel="preload" href="img/logo.png" as="image">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ── VARIABLES ──────────────────────────────────── */
@@ -115,6 +124,10 @@ nav {
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+.theme-btn .lucide { width: 1rem; height: 1rem; stroke: currentColor; }
+.theme-btn .theme-icon-light { display: none; }
+body.light .theme-btn .theme-icon-dark { display: none; }
+body.light .theme-btn .theme-icon-light { display: block; }
 
 /* Mobile hamburger */
 .hamburger {
@@ -233,7 +246,7 @@ body.light .hero-title .outline { -webkit-text-stroke: 1px rgba(90,79,207,0.4); 
   display: flex; align-items: center; gap: 0.4rem;
   transition: color 0.2s;
 }
-.btn-ghost::after { content: '↗'; }
+.btn-ghost .lucide { width: 0.9rem; height: 0.9rem; stroke: currentColor; margin-left: 0.35rem; }
 .btn-ghost:hover { color: var(--text); }
 
 /* Hero photo */
@@ -405,8 +418,10 @@ body.light .tl-tag { background: rgba(90,79,207,0.06); border-color: rgba(90,79,
 .cert-icon svg { width: 22px; height: 22px; flex-shrink: 0; }
 .cert-text strong { display: block; color: var(--text); font-size: 0.7rem; line-height: 1.4; margin-bottom: 0.1rem; }
 .cert-text span { color: var(--muted); font-size: 0.62rem; }
-.cert-arrow { margin-left: auto; color: var(--muted); transition: color 0.2s, transform 0.2s; }
+.cert-arrow { margin-left: auto; color: var(--muted); transition: color 0.2s, transform 0.2s; display: flex; align-items: center; }
+.cert-arrow svg, .cert-arrow .lucide { width: 1rem; height: 1rem; stroke: currentColor; }
 .cert-item:hover .cert-arrow { color: var(--accent2); transform: translate(3px,-3px); }
+.project-link svg, .project-link .lucide { width: 1rem; height: 1rem; stroke: currentColor; }
 
 /* ── PROJECTS ───────────────────────────────────── */
 .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
@@ -434,20 +449,19 @@ body.light .tl-tag { background: rgba(90,79,207,0.06); border-color: rgba(90,79,
   transition: background 0.35s, border-color 0.35s;
 }
 .project-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.project-thumb .plabel { z-index: 1; }
-body.light .project-thumb { color: rgba(90,79,207,0.1); }
 .project-thumb .plabel {
-  position: absolute; bottom: 0.4rem; left: 0.4rem;
+  z-index: 1; position: absolute; bottom: 0.4rem; left: 0.4rem;
   font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
   color: var(--accent2); background: rgba(0,0,0,0.55); padding: 0.12rem 0.35rem;
   letter-spacing: 0.08em;
 }
+body.light .project-thumb { color: rgba(90,79,207,0.1); }
 body.light .project-thumb .plabel { background: rgba(0,0,0,0.15); }
 .project-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--bright); margin-bottom: 0.45rem; }
 .project-desc { font-size: 0.68rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.9rem; }
 .project-foot { display: flex; justify-content: space-between; align-items: center; }
 .project-role { font-size: 0.62rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
-.project-link { color: var(--muted); text-decoration: none; font-size: 1rem; transition: color 0.2s; }
+.project-link { color: var(--muted); text-decoration: none; font-size: 1rem; transition: color 0.2s; display: inline-flex; align-items: center; }
 .project-link:hover { color: var(--accent2); }
 
 /* ── CONTACT ────────────────────────────────────── */
@@ -479,8 +493,8 @@ body.light .contact-big em { -webkit-text-stroke: 1px rgba(90,79,207,0.35); }
   font-size: 1rem; transition: border-color 0.2s, background 0.2s;
   color: var(--text);
 }
-.channel-icon svg { width: 20px; height: 20px; flex-shrink: 0; }
-.channel-icon svg path { fill: currentColor; }
+.channel-icon svg, .channel-icon .lucide { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; }
+.channel-icon .lucide { color: inherit; }
 .channel:hover .channel-icon { border-color: var(--accent); background: rgba(123,110,246,0.08); }
 .channel-label { display: block; font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.13em; margin-bottom: 0.1rem; }
 .channel-value { color: var(--text); font-size: 0.76rem; }
@@ -566,7 +580,7 @@ footer {
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <a href="#home" class="nav-logo"><img src="img/logo.png" alt="IG"></a>
+  <a href="#home" class="nav-logo"><img src="img/logo.png" alt="IG" fetchpriority="high"></a>
   <ul class="nav-links">
     <li><a href="#sobre-mi"><span data-lang="es" class="active">Sobre mí</span><span data-lang="en">About</span></a></li>
     <li><a href="#experiencia"><span data-lang="es" class="active">Experiencia</span><span data-lang="en">Experience</span></a></li>
@@ -578,17 +592,17 @@ footer {
           <button class="lang-btn active" onclick="setLang('es')">ES</button>
           <button class="lang-btn" onclick="setLang('en')">EN</button>
         </div>
-        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">☀</button>
+        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme" aria-label="Cambiar tema claro/oscuro"><i data-lucide="sun" class="theme-icon-dark"></i><i data-lucide="moon" class="theme-icon-light"></i></button>
       </div>
     </li>
     <li><a href="#contacto" class="nav-cta"><span data-lang="es" class="active">Contactar</span><span data-lang="en">Contact</span></a></li>
   </ul>
-  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Abrir menú" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="mobile-nav" id="mobileNav">
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <a href="#sobre-mi" onclick="closeMobile()"><span data-lang="es" class="active">Sobre mí</span><span data-lang="en">About</span></a>
   <a href="#experiencia" onclick="closeMobile()"><span data-lang="es" class="active">Experiencia</span><span data-lang="en">Experience</span></a>
   <a href="#aptitudes" onclick="closeMobile()">Skills</a>
@@ -599,7 +613,7 @@ footer {
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <button class="theme-btn" onclick="toggleTheme()">☀</button>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema claro/oscuro"><i data-lucide="sun" class="theme-icon-dark"></i><i data-lucide="moon" class="theme-icon-light"></i></button>
   </div>
 </div>
 
@@ -627,7 +641,7 @@ footer {
       </div>
       <div class="hero-actions">
         <a href="#proyectos" class="btn-primary"><span data-lang="es" class="active">Ver proyectos</span><span data-lang="en">View projects</span></a>
-        <a href="#contacto" class="btn-ghost"><span data-lang="es" class="active">Hablemos</span><span data-lang="en">Let's talk</span></a>
+        <a href="#contacto" class="btn-ghost"><span data-lang="es" class="active">Hablemos</span><span data-lang="en">Let's talk</span><i data-lucide="arrow-up-right"></i></a>
       </div>
     </div>
     <div class="hero-visual">
@@ -784,9 +798,9 @@ footer {
       </div>
       <div class="skill-cat"><span data-lang="es" class="active">Certificaciones</span><span data-lang="en">Certifications</span></div>
       <div class="certs-list">
-        <a href="https://www.youracclaim.com/badges/12c20a96-fcdf-4d79-a179-808a439933ea" target="_blank" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000" fill-rule="evenodd"><path d="M2 12A10 4 0 0 1 22 12A10 4 0 0 1 2 12zM5 12A7 2.5 0 0 1 19 12A7 2.5 0 0 1 5 12z"/></svg></div><div class="cert-text"><strong>Oracle Certified Expert, Java EE6 Web Services Developer</strong><span>Oracle University</span></div><span class="cert-arrow">↗</span></a>
-        <a href="https://www.youracclaim.com/badges/34f85326-6b71-4a96-ae4d-adc66c75ab25" target="_blank" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000" fill-rule="evenodd"><path d="M2 12A10 4 0 0 1 22 12A10 4 0 0 1 2 12zM5 12A7 2.5 0 0 1 19 12A7 2.5 0 0 1 5 12z"/></svg></div><div class="cert-text"><strong>Oracle Certified Professional, Java SE 7 Programmer</strong><span>Oracle University</span></div><span class="cert-arrow">↗</span></a>
-        <a href="https://www.youracclaim.com/badges/6e33c0c1-54f0-4823-a785-d1ccceef9b29" target="_blank" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000" fill-rule="evenodd"><path d="M2 12A10 4 0 0 1 22 12A10 4 0 0 1 2 12zM5 12A7 2.5 0 0 1 19 12A7 2.5 0 0 1 5 12z"/></svg></div><div class="cert-text"><strong>Oracle Certified Associate, Java SE 7 Programmer</strong><span>Oracle University</span></div><span class="cert-arrow">↗</span></a>
+        <a href="https://www.youracclaim.com/badges/12c20a96-fcdf-4d79-a179-808a439933ea" target="_blank" rel="noopener noreferrer" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"/></svg></div><div class="cert-text"><strong>Oracle Certified Expert, Java EE6 Web Services Developer</strong><span>Oracle University</span></div><span class="cert-arrow"><i data-lucide="arrow-up-right"></i></span></a>
+        <a href="https://www.youracclaim.com/badges/34f85326-6b71-4a96-ae4d-adc66c75ab25" target="_blank" rel="noopener noreferrer" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"/></svg></div><div class="cert-text"><strong>Oracle Certified Professional, Java SE 7 Programmer</strong><span>Oracle University</span></div><span class="cert-arrow"><i data-lucide="arrow-up-right"></i></span></a>
+        <a href="https://www.youracclaim.com/badges/6e33c0c1-54f0-4823-a785-d1ccceef9b29" target="_blank" rel="noopener noreferrer" class="cert-item"><div class="cert-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F80000"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"/></svg></div><div class="cert-text"><strong>Oracle Certified Associate, Java SE 7 Programmer</strong><span>Oracle University</span></div><span class="cert-arrow"><i data-lucide="arrow-up-right"></i></span></a>
       </div>
     </div>
   </div>
@@ -801,45 +815,45 @@ footer {
   <div class="projects-grid">
     <div class="project-card reveal">
       <div class="project-num">01</div>
-      <div class="project-thumb"><img src="img/xunta.png" alt="Xunta de Galicia"><span class="plabel">Vue · Microfrontends · Gov</span></div>
+      <div class="project-thumb"><img src="img/xunta.png" alt="Xunta de Galicia" loading="lazy" decoding="async"><span class="plabel">Vue · Microfrontends · Gov</span></div>
       <div class="project-name">Xunta de Galicia</div>
       <div class="project-desc"><span data-lang="es" class="active">Portales educativos para centros, profesorado y familias. Sistema de diseño unificado y Microfrontends con Vue y Vuetify.</span><span data-lang="en">Educational portals for schools, teachers and families. Unified Design System and Microfrontends with Vue and Vuetify.</span></div>
       <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">02</div>
-      <div class="project-thumb"><img src="img/cern.png" alt="CERN"><span class="plabel">Angular · TypeScript · Science</span></div>
+      <div class="project-thumb"><img src="img/cern.png" alt="CERN" loading="lazy" decoding="async"><span class="plabel">Angular · TypeScript · Science</span></div>
       <div class="project-name">CERN</div>
       <div class="project-desc"><span data-lang="es" class="active">Aplicaciones críticas para visualización de datos científicos complejos. Optimización con lazy loading y virtual scrolling.</span><span data-lang="en">Mission-critical applications for complex scientific data visualization. Optimized with lazy loading and virtual scrolling.</span></div>
       <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">03</div>
-      <div class="project-thumb"><img src="img/netex.jpg" alt="Netex Learning"><span class="plabel">Angular · PrimeNG · E-learning</span></div>
+      <div class="project-thumb"><img src="img/netex.jpg" alt="Netex Learning" loading="lazy" decoding="async"><span class="plabel">Angular · PrimeNG · E-learning</span></div>
       <div class="project-name">Netex Learning</div>
       <div class="project-desc"><span data-lang="es" class="active">Aplicaciones educativas y librería de componentes para e-learning. QA con Cypress y documentación en Storybook.</span><span data-lang="en">Educational applications and component library for e-learning. QA with Cypress and documentation in Storybook.</span></div>
-      <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span><a href="https://www.netexlearning.com/" target="_blank" class="project-link">↗</a></div>
+      <div class="project-foot"><span class="project-role">Lead/Senior Frontend Developer</span><a href="https://www.netexlearning.com/" target="_blank" rel="noopener noreferrer" class="project-link"><i data-lucide="arrow-up-right"></i></a></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">04</div>
-      <div class="project-thumb"><img src="img/consum.jpg" alt="Consum"><span class="plabel">Angular · Design Systems · Retail</span></div>
+      <div class="project-thumb"><img src="img/consum.jpg" alt="Consum" loading="lazy" decoding="async"><span class="plabel">Angular · Design Systems · Retail</span></div>
       <div class="project-name">Consum</div>
       <div class="project-desc"><span data-lang="es" class="active">Arquitectura Frontend corporativa. Librería de componentes, generador con Angular Schematics y Design System en Storybook.</span><span data-lang="en">Corporate Frontend architecture. Component library, Angular Schematics generator and Design System in Storybook.</span></div>
       <div class="project-foot"><span class="project-role"><span data-lang="es" class="active">Arquitecto Frontend</span><span data-lang="en">Frontend Architect</span></span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">05</div>
-      <div class="project-thumb"><img src="img/latercera.jpg" alt="La Tercera"><span class="plabel">PHP · JavaScript · High traffic</span></div>
+      <div class="project-thumb"><img src="img/latercera.jpg" alt="La Tercera" loading="lazy" decoding="async"><span class="plabel">PHP · JavaScript · High traffic</span></div>
       <div class="project-name">La Tercera</div>
       <div class="project-desc"><span data-lang="es" class="active">Diario digital de mayor difusión en Chile. Alto tráfico y escalabilidad, REST API para exposición de contenidos.</span><span data-lang="en">Chile's highest-circulation digital newspaper. High traffic, scalability and REST API for content exposure.</span></div>
-      <div class="project-foot"><span class="project-role">Full-Stack Developer</span><a href="https://www.latercera.com/" target="_blank" class="project-link">↗</a></div>
+      <div class="project-foot"><span class="project-role">Full-Stack Developer</span><a href="https://www.latercera.com/" target="_blank" rel="noopener noreferrer" class="project-link"><i data-lucide="arrow-up-right"></i></a></div>
     </div>
     <div class="project-card reveal">
       <div class="project-num">06</div>
-      <div class="project-thumb"><img src="img/datamaran.jpg" alt="Datamaran"><span class="plabel">AngularJS · HTML/CSS · BI</span></div>
+      <div class="project-thumb"><img src="img/datamaran.jpg" alt="Datamaran" loading="lazy" decoding="async"><span class="plabel">AngularJS · HTML/CSS · BI</span></div>
       <div class="project-name">Datamaran</div>
       <div class="project-desc"><span data-lang="es" class="active">Plataforma SaaS multi-usuario para análisis de riesgos regulatorios, competencia y reputacionales.</span><span data-lang="en">Multi-user SaaS platform for regulatory, competitive and reputational risk analysis.</span></div>
-      <div class="project-foot"><span class="project-role">Full-Stack Developer</span><a href="https://www.datamaran.com/" target="_blank" class="project-link">↗</a></div>
+      <div class="project-foot"><span class="project-role">Full-Stack Developer</span><a href="https://www.datamaran.com/" target="_blank" rel="noopener noreferrer" class="project-link"><i data-lucide="arrow-up-right"></i></a></div>
     </div>
   </div>
 </div>
@@ -855,16 +869,16 @@ footer {
       <p class="contact-sub"><span data-lang="es" class="active">Si tienes un proyecto que requiere arquitectura Frontend sólida, liderazgo técnico o simplemente quieres hablar de tecnología — escríbeme. Disponible para proyectos remotos e internacionales.</span><span data-lang="en">If you have a project that requires solid Frontend architecture, technical leadership, or simply want to talk tech — reach out. Available for remote and international projects.</span></p>
     </div>
     <div class="channels">
-      <a href="mailto:ivan.gomez.grande@gmail.com" class="channel"><div class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><span class="channel-label">Email</span><span class="channel-value">ivan.gomez.grande@gmail.com</span></div><span class="channel-arrow">↗</span></a>
-      <a href="https://es.linkedin.com/in/igogra" target="_blank" class="channel"><div class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div><div><span class="channel-label">LinkedIn</span><span class="channel-value">/in/igogra</span></div><span class="channel-arrow">↗</span></a>
-      <a href="https://github.com/igogra" target="_blank" class="channel"><div class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.63-5.373-12-12-12"/></svg></div><div><span class="channel-label">GitHub</span><span class="channel-value">/igogra</span></div><span class="channel-arrow">↗</span></a>
+      <a href="mailto:ivan.gomez.grande@gmail.com" class="channel"><div class="channel-icon"><i data-lucide="mail"></i></div><div><span class="channel-label">Email</span><span class="channel-value">ivan.gomez.grande@gmail.com</span></div><span class="channel-arrow"><i data-lucide="arrow-up-right"></i></span></a>
+      <a href="https://es.linkedin.com/in/igogra" target="_blank" rel="noopener noreferrer" class="channel"><div class="channel-icon"><i data-lucide="linkedin"></i></div><div><span class="channel-label">LinkedIn</span><span class="channel-value">/in/igogra</span></div><span class="channel-arrow"><i data-lucide="arrow-up-right"></i></span></a>
+      <a href="https://github.com/igogra" target="_blank" rel="noopener noreferrer" class="channel"><div class="channel-icon"><i data-lucide="github"></i></div><div><span class="channel-label">GitHub</span><span class="channel-value">/igogra</span></div><span class="channel-arrow"><i data-lucide="arrow-up-right"></i></span></a>
     </div>
   </div>
 </div>
 </section>
 
 <footer>
-  <div class="footer-copy">© 2026 — <span>Iván Gómez</span></div>
+  <div class="footer-copy">© <span id="footer-year"></span> — <span>Iván Gómez</span></div>
   <div class="footer-status"><div class="status-dot"></div><span data-lang="es" class="active">Disponible para proyectos</span><span data-lang="en">Available for projects</span></div>
 </footer>
 
@@ -874,22 +888,29 @@ var isDark = true;
 var currentLang = 'es';
 
 // ── THEME ────────────────────────────────────────
+function setThemeStorage(value) {
+  try {
+    localStorage.setItem('ig_theme', value);
+    return true;
+  } catch (e) {
+    if (e.name === 'QuotaExceededError' || e.name === 'SecurityError') return false;
+    throw e;
+  }
+}
 function toggleTheme() {
   isDark = !isDark;
   document.body.classList.toggle('light', !isDark);
-  var icon = isDark ? '☀' : '☾';
-  document.querySelectorAll('.theme-btn').forEach(function(b) { b.textContent = icon; });
-  try { localStorage.setItem('ig_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+  setThemeStorage(isDark ? 'dark' : 'light');
 }
 
 // ── LANGUAGE ─────────────────────────────────────
 function setLang(lang) {
   currentLang = lang;
   document.querySelectorAll('[data-lang]').forEach(function(el) {
-    el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+    el.classList.toggle('active', el.dataset.lang === lang);
   });
   document.querySelectorAll('[data-lang-block]').forEach(function(el) {
-    el.classList.toggle('active', el.getAttribute('data-lang-block') === lang);
+    el.classList.toggle('active', el.dataset.langBlock === lang);
   });
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
@@ -901,14 +922,14 @@ function setLang(lang) {
 function toggleMobileMenu() {
   var h = document.getElementById('hamburger');
   var n = document.getElementById('mobileNav');
-  if (h) h.classList.toggle('open');
-  if (n) n.classList.toggle('open');
+  if (h) { h.classList.toggle('open'); h.setAttribute('aria-expanded', h.classList.contains('open')); h.setAttribute('aria-label', h.classList.contains('open') ? 'Cerrar menú' : 'Abrir menú'); }
+  if (n) { n.classList.toggle('open'); n.setAttribute('aria-hidden', n.classList.contains('open') ? 'false' : 'true'); }
 }
 function closeMobile() {
   var h = document.getElementById('hamburger');
   var n = document.getElementById('mobileNav');
-  if (h) h.classList.remove('open');
-  if (n) n.classList.remove('open');
+  if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); h.setAttribute('aria-label', 'Abrir menú'); }
+  if (n) { n.classList.remove('open'); n.setAttribute('aria-hidden', 'true'); }
 }
 
 // ── CURSOR ───────────────────────────────────────
@@ -946,14 +967,14 @@ var twIdx = 0, twCi = 0, twDel = false;
 function typeLoop() {
   var arr = twTexts[currentLang];
   var word = arr[twIdx % arr.length];
-  if (!twDel) {
-    twCi++;
-    if (tw) tw.textContent = word.slice(0, twCi);
-    if (twCi === word.length) { twDel = true; setTimeout(typeLoop, 2000); return; }
-  } else {
+  if (twDel) {
     twCi--;
     if (tw) tw.textContent = word.slice(0, twCi);
     if (twCi === 0) { twDel = false; twIdx = (twIdx + 1) % arr.length; }
+  } else {
+    twCi++;
+    if (tw) tw.textContent = word.slice(0, twCi);
+    if (twCi === word.length) { twDel = true; setTimeout(typeLoop, 2000); return; }
   }
   setTimeout(typeLoop, twDel ? 45 : 85);
 }
@@ -965,16 +986,42 @@ var revealObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(function(r) { revealObs.observe(r); });
 
+// ── FOOTER YEAR ───────────────────────────────────
+(function() {
+  var y = document.getElementById('footer-year');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+
 // ── INIT: restore saved preferences ───────────────
 (function() {
-  try {
-    var t = localStorage.getItem('ig_theme');
-    if (t === 'light') {
-      isDark = false;
-      document.body.classList.add('light');
-      document.querySelectorAll('.theme-btn').forEach(function(b) { b.textContent = '☾'; });
+  function getThemeStorage() {
+    try {
+      return localStorage.getItem('ig_theme');
+    } catch (e) {
+      if (e.name === 'QuotaExceededError' || e.name === 'SecurityError') return null;
+      throw e;
     }
-  } catch(e) {}
+  }
+  var t = getThemeStorage();
+  if (t === 'light') {
+    isDark = false;
+    document.body.classList.add('light');
+  }
+})();
+
+// ── LUCIDE ICONS (deferred for faster initial load) ─
+(function() {
+  function loadLucide() {
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js';
+    s.onload = function() { if (typeof lucide !== 'undefined') lucide.createIcons(); };
+    document.body.appendChild(s);
+  }
+  if ('requestIdleCallback' in globalThis) {
+    requestIdleCallback(loadLucide, { timeout: 2000 });
+  } else {
+    setTimeout(loadLucide, 1);
+  }
 })();
 </script>
 </body>
