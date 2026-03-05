@@ -1067,9 +1067,6 @@ document.querySelectorAll('.skill-bar-list').forEach(function(el) { skillObs.obs
   if (t === 'light') {
     isDark = false;
     document.body.classList.add('light');
-  } else if (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    isDark = false;
-    document.body.classList.add('light');
   }
 })();
 
